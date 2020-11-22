@@ -11,6 +11,9 @@
       "wbstack/magnustools": "dev-wbstack"
     },
     "scripts": {
+        "post-install-cmd": [
+            "cp -r vendor/wbstack/magnustools/public_html/resources public_html/resources"
+        ],
         "post-update-cmd": [
             "cp -r vendor/wbstack/magnustools/public_html/resources public_html/resources"
         ]
