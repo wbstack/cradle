@@ -15,7 +15,11 @@ $(document).ready ( function () {
             prop:'wikitext' ,
             format:'json'
         } , function ( d ) {
-            parseSourceData ( d.parse.wikitext['*'] , callback ) ;
+            if(d.parse) {
+                parseSourceData ( d.parse.wikitext['*'] , callback ) ;
+            } else {
+                callback() ;
+            }
         } )
     } ;
 
@@ -59,7 +63,7 @@ $(document).ready ( function () {
 
 
     vue_components.toolname = 'cradle' ;
-//    vue_components.components_base_url = 'https://tools.wmflabs.org/magnustools/resources/vue/' ; // For testing; turn off to use tools-static
+    vue_components.components_base_url = config.vue_components_base_url
     Promise.all ( [
         vue_components.loadComponents ( ['wd-date','wd-link','tool-translate','tool-navbar','commons-thumbnail','widar','autodesc','typeahead-search','value-validator',
             'vue_components/prop-value.html',
