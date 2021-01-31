@@ -9,7 +9,7 @@ let subjects = {} ;
 $(document).ready ( function () {
 
     function loadSourcePage ( callback ) {
-        $.getJSON ( config.api+'?callback=?' , {
+        $.getJSON ( config.wikibase_api+'?callback=?' , {
             action:'parse',
             page:config.source_page,
             prop:'wikitext' ,
@@ -73,8 +73,9 @@ $(document).ready ( function () {
             ] )
     ] )
     .then ( () => {
+        widar_api_url = config.cradle_api ;
 
-        wd.set_custom_api ( config.api , function () {
+        wd.set_custom_api ( config.wikibase_api , function () {
             wd_link_wd = wd ;
             loadSourcePage ( function () {
               const routes = [
