@@ -4,28 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa14dba2326b21872d0f45c77c494fa6",
+    "content-hash": "68005b76a5a9ad021317426b15f4252e",
     "packages": [
         {
             "name": "wbstack/magnustools",
-            "version": "dev-wbstack",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wbstack/magnustools.git",
-                "reference": "429f68414b98fed4800cc010b8813abb8d624eb5"
+                "reference": "7ea40cdb49b5e2a5e8e44e7afa254405bc9fdc58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/429f68414b98fed4800cc010b8813abb8d624eb5",
-                "reference": "429f68414b98fed4800cc010b8813abb8d624eb5",
+                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/7ea40cdb49b5e2a5e8e44e7afa254405bc9fdc58",
+                "reference": "7ea40cdb49b5e2a5e8e44e7afa254405bc9fdc58",
                 "shasum": ""
             },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
+            },
             "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toolforge\\": "classes/"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Magnus Manske",
+                    "email": "magnusmanske@gmail.com",
+                    "homepage": "http://magnusmanske.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Useful classes for Wikimedia Toolforge",
+            "homepage": "https://bitbucket.com/magnusmanske/magnustools",
             "support": {
-                "source": "https://github.com/wbstack/magnustools/tree/wbstack",
+                "source": "https://github.com/wbstack/magnustools/tree/main",
                 "issues": "https://github.com/wbstack/magnustools/issues"
             },
-            "time": "2020-11-22T15:35:25+00:00"
+            "time": "2021-01-31T12:21:33+00:00"
         }
     ],
     "packages-dev": [],
