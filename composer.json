@@ -12,10 +12,10 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "cp -r vendor/wbstack/magnustools/public_html/resources public_html/resources"
+            "cp -r vendor/wbstack/magnustools/public_html/resources public_html/"
         ],
         "post-update-cmd": [
-            "cp -r vendor/wbstack/magnustools/public_html/resources public_html/resources"
+            "cp -r vendor/wbstack/magnustools/public_html/resources public_html/"
         ]
     }
 }

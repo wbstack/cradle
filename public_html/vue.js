@@ -73,7 +73,7 @@ $(document).ready ( function () {
             ] )
     ] )
     .then ( () => {
-        widar_api_url = config.cradle_api ;
+        let widar_api_url = config.widar_api_url ;
 
         wd.set_custom_api ( config.wikibase_api , function () {
             wd_link_wd = wd ;

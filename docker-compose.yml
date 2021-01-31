@@ -6,5 +6,6 @@ services:
     - ./docker/config-docker-compose.js:/usr/share/nginx/html/config.js
     - ./public_html/vue.js:/usr/share/nginx/html/vue.js
     - ./public_html/vue_components:/usr/share/nginx/html/vue_components
+    - ./public_html/resources:/usr/share/nginx/html/resources
     ports:
       - 8087:80
