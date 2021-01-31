@@ -1,5 +1,11 @@
 # cradle
 
+## January 2021
+
+- 1.1 - Update from upstream
+  - New magnustools code
+  - Updated config
+
 ## November 2020
 
 - 1.0 - From Github builds
