@@ -1,7 +1,13 @@
 # cradle
 
+## March 2021
+
+- 1.1.2 - Update from upstream
+  - Fix for shex page using wrong config
+
 ## January 2021
 
+- 1.1.1 - Use main branch of wbstack/magnustools
 - 1.1 - Update from upstream
   - New magnustools code
   - Updated config
