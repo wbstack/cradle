@@ -3,6 +3,7 @@
 let config = {
     "source_page":'Project:Cradle',
     "wikibase_url":window.location.protocol + '//' + window.location.host + '/wiki/',
+    "api":window.location.protocol + '//' + window.location.host + '/w/api.php',
     "wikibase_api":window.location.protocol + '//' + window.location.host + '/w/api.php',
     "oauth_url":window.location.protocol + '//' + window.location.host + '/w/index.php?title=Special:OAuth',
     "cradle_url":window.location.protocol + '//' + window.location.host + '/tools/cradle/',
