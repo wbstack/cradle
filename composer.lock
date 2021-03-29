@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68005b76a5a9ad021317426b15f4252e",
+    "content-hash": "b20f9bf04005c886962aedffbb767ebe",
     "packages": [
         {
             "name": "wbstack/magnustools",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wbstack/magnustools.git",
-                "reference": "7ea40cdb49b5e2a5e8e44e7afa254405bc9fdc58"
+                "reference": "f657632306dfd1f03305c12bd0fbf9cdba15b954"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/7ea40cdb49b5e2a5e8e44e7afa254405bc9fdc58",
-                "reference": "7ea40cdb49b5e2a5e8e44e7afa254405bc9fdc58",
+                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/f657632306dfd1f03305c12bd0fbf9cdba15b954",
+                "reference": "f657632306dfd1f03305c12bd0fbf9cdba15b954",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 "source": "https://github.com/wbstack/magnustools/tree/main",
                 "issues": "https://github.com/wbstack/magnustools/issues"
             },
-            "time": "2021-01-31T12:21:33+00:00"
+            "time": "2021-03-29T21:01:20+00:00"
         }
     ],
     "packages-dev": [],

@@ -2,6 +2,8 @@
 
 ## March 2021
 
+- 2.0 - PHP 7.3, Apache & API config change
+
 - 1.1.2 - Update from upstream
   - Fix for shex page using wrong config
 

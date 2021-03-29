@@ -3,9 +3,8 @@ services:
   cradle:
     build: .
     volumes:
-    - ./docker/config-docker-compose.js:/usr/share/nginx/html/config.js
-    - ./public_html/vue.js:/usr/share/nginx/html/vue.js
-    - ./public_html/vue_components:/usr/share/nginx/html/vue_components
-    - ./public_html/resources:/usr/share/nginx/html/resources
+    - ./docker/config-docker-compose.js:/var/www/html/cradle/public_html/config.js
+    - ./public_html:/var/www/html/cradle/public_html
+    - ./vendor:/var/www/html/cradle/vendor
     ports:
       - 8087:80
