@@ -1,3 +1,6 @@
+> ℹ️ Issues for this repository are tracked on [Phabricator](https://phabricator.wikimedia.org/project/board/5563/) - ([Click here to open a new one](https://phabricator.wikimedia.org/maniphest/task/edit/form/1/?tags=wikibase_cloud
+))
+
 # Cradle
 Cradle is a tool to help create Wikibase (eg Wikidata) items that are based on a specific pattern (eg "ancient ceramicist"). These patterns can be defined on-wiki as wikitext or ShEX. The user is then presented with a form that allows a hard-limited. soft-limites, or free addition of statements.
 
