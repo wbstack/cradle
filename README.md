@@ -2,7 +2,7 @@
 ))
 
 # WBStack/Wikibase.cloud info
-This repo is a fork of https://github.com/magnusmanske/quickstatements
+This repo is a fork of https://github.com/magnusmanske/cradle
 The Dockerfile build process runs composer and pulls a version the wbstack fork of magnus-tools from https://github.com/wbstack/magnustools/
 
 This is then copied out of `/vendor` by a `composer` post-update/install hook and then finally copied into the correct place in the final image.
