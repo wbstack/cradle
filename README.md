@@ -11,6 +11,8 @@ To update this repository you need to pull the updates from the upstream and ens
 
 If you go through this process please also update here to document it
 
+# Changelog
+
 # Cradle
 Cradle is a tool to help create Wikibase (eg Wikidata) items that are based on a specific pattern (eg "ancient ceramicist"). These patterns can be defined on-wiki as wikitext or ShEX. The user is then presented with a form that allows a hard-limited. soft-limites, or free addition of statements.
 
