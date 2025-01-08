@@ -7,17 +7,6 @@ Cradle is a tool to help create Wikibase (eg Wikidata) items that are based on a
 These patterns can be defined on-wiki as wikitext or ShEX.
 The user is then presented with a form that allows a hard-limited, soft-limitesd, or free addition of statements.
 
-## Changelog
-- 2024-01-08: Synced with upstream https://github.com/magnusmanske/cradle/commit/cc3aef8a7e5572857314db54a4a19b15a96548fe
-
-## Syncing this fork
-- Switch/Create a branch for the merge
-- Add local upstream remote: `git remote add upstream https://github.com/magnusmanske/cradle`
-- Fetch upstream: `git fetch upstream`  
-- Merge master(!) branch: `git merge upstream/master`
-- Resolve conflictcs (if any)
-- Update Changelog
-
 ## Setup
 
 ### Config file
