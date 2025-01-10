@@ -17,7 +17,7 @@ To update this repository you need to pull the updates from the upstream and ens
 - Add local upstream remote: `git remote add upstream https://github.com/magnusmanske/cradle`
 - Fetch upstream: `git fetch upstream`  
 - Merge master(!) branch: `git merge upstream/master`
-- Resolve conflictcs (if any)
+- Resolve conflicts (if any)
 - Update Changelog
 
 ---
