@@ -54,3 +54,69 @@ jobs:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+      -
+        name: Check out `wmde/wbaas-deploy` repository in staging child directory
+        if: github.event_name != 'pull_request'
+        uses: actions/checkout@v3.5.3
+        with:
+          repository: wmde/wbaas-deploy
+          path: ./repos/wbaas-deploy-staging
+      -
+        name: Check out `wmde/wbaas-deploy` repository in production child directory
+        if: github.event_name != 'pull_request'
+        uses: actions/checkout@v3.5.3
+        with:
+          repository: wmde/wbaas-deploy
+          path: ./repos/wbaas-deploy-production
+      -
+        name: Update helmfile values for local, staging and production
+        if: github.event_name != 'pull_request'
+        id: update-helmfile-values
+        run: |
+          TAG="$(echo ${{ steps.docker_meta.outputs.tags }} | cut -d':' -f2)"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/local/tool-cradle.values.yaml.gotmpl
+          sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-staging/k8s/helmfile/env/staging/tool-cradle.values.yaml.gotmpl
+          sed -i "/image:/{n;s/tag:.*/tag: $TAG/;}" ./repos/wbaas-deploy-production/k8s/helmfile/env/production/tool-cradle.values.yaml.gotmpl
+          # run the values script for local, prod and staging
+      -
+        name: Truncate commit message
+        if: github.event_name != 'pull_request'
+        id: truncate-commit-message
+        run: |
+          MSG=$(git log -1 --pretty=format:%s)
+          echo "msg=$MSG" >> $GITHUB_OUTPUT
+      -
+        name: Create Staging+Local Pull Request
+        uses: peter-evans/create-pull-request@v5
+        if: github.event_name != 'pull_request'
+        with:
+          path: ./repos/wbaas-deploy-staging
+          commit-message: 'Staging+Local: Deploy new Cradle image ${{ steps.docker_meta.outputs.tags }}'
+          title: 'Staging+Local: Deploy new Cradle image ${{ steps.docker_meta.outputs.tags }}'
+          branch: deploy-to-staging-${{ steps.update-helmfile-values.outputs.tag }}
+          committer: wmdebot <github-bots@wikimedia.de>
+          author: ${{ github.actor }} <github-bots@wikimedia.de>
+          labels: automated pr
+          token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
+          body: |
+            This is an automated update for the `tool-cradle` image in staging and local, using `${{ steps.update-helmfile-values.outputs.tag }}`.
+
+            **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/cradle/commit/${{ github.sha }})
+      -
+        name: Create Production Pull Request
+        uses: peter-evans/create-pull-request@v5
+        if: github.event_name != 'pull_request'
+        with:
+          path: ./repos/wbaas-deploy-production
+          commit-message: 'Production: Deploy new Cradle image ${{ steps.docker_meta.outputs.tags }}'
+          title: 'Production: Deploy new Cradle image ${{ steps.docker_meta.outputs.tags }}'
+          branch: deploy-to-production-${{ steps.update-helmfile-values.outputs.tag }}
+          committer: wmdebot <github-bots@wikimedia.de>
+          author: ${{ github.actor }} <github-bots@wikimedia.de>
+          labels: automated pr
+          token: ${{ secrets.WBAAS_DEPLOY_TOKEN }}
+          body: |
+            This is an automated update for the `tool-cradle` image in production, using `${{ steps.update-helmfile-values.outputs.tag }}`.
+
+            **Changes**: [${{ steps.truncate-commit-message.outputs.msg }}](https://github.com/wbstack/cradle/commit/${{ github.sha }})
