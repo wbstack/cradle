@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba155d1432813617d73605dea8764e17",
+    "content-hash": "2185e29db2fcad992a7ab6370a40b20b",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1011,16 +1011,16 @@
         },
         {
             "name": "wbstack/magnustools",
-            "version": "dev-de/sync-2024-01-14-A",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wbstack/magnustools.git",
-                "reference": "472015c48b4b3d4813cc9af536b06e0282b3822f"
+                "reference": "68dfeb87266a66d751fbf28937ffc03a779a8450"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/472015c48b4b3d4813cc9af536b06e0282b3822f",
-                "reference": "472015c48b4b3d4813cc9af536b06e0282b3822f",
+                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/68dfeb87266a66d751fbf28937ffc03a779a8450",
+                "reference": "68dfeb87266a66d751fbf28937ffc03a779a8450",
                 "shasum": ""
             },
             "require": {
@@ -1032,6 +1032,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^8.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1055,7 +1056,7 @@
                 "issues": "https://bitbucket.org/magnusmanske/magnustools/issues?status=new&status=open",
                 "source": "https://bitbucket.org/magnusmanske/magnustools/"
             },
-            "time": "2025-01-14T17:25:32+00:00"
+            "time": "2025-01-29T10:54:17+00:00"
         }
     ],
     "packages-dev": [],
@@ -1066,7 +1067,7 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
