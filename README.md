@@ -10,6 +10,7 @@ This is then copied out of `/vendor` by a `composer` post-update/install hook an
 To update this repository you need to pull the updates from the upstream and ensure our customisations are working on them. You may also need to update our magnustools fork for compatibility and then use that updated version.
 
 ## Changelog
+- 2025-03-19: Remove id attribute on Help link
 - 2025-03-18: Update Cradle Git and Help links
 - 2024-01-08: Synced with upstream https://github.com/magnusmanske/cradle/commit/cc3aef8a7e5572857314db54a4a19b15a96548fe
 
