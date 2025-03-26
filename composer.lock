@@ -1015,12 +1015,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wbstack/magnustools.git",
-                "reference": "68dfeb87266a66d751fbf28937ffc03a779a8450"
+                "reference": "e3ddd872410e3d25cec63c5d646ba8cdd9a813ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/68dfeb87266a66d751fbf28937ffc03a779a8450",
-                "reference": "68dfeb87266a66d751fbf28937ffc03a779a8450",
+                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/e3ddd872410e3d25cec63c5d646ba8cdd9a813ae",
+                "reference": "e3ddd872410e3d25cec63c5d646ba8cdd9a813ae",
                 "shasum": ""
             },
             "require": {
