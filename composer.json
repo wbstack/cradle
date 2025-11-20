@@ -8,7 +8,7 @@
       }
     ],
     "require": {
-      "wbstack/magnustools": "dev-main#TBD"
+      "wbstack/magnustools": "dev-main#02267937eec783642d30ce987c53a99e285f4676"
     },
     "scripts": {
         "post-install-cmd": [
