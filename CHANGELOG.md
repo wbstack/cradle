@@ -1,4 +1,9 @@
 # cradle
+## November 2025
+- 4.0 - Replace MW backend host env var with API call lookup https://phabricator.wikimedia.org/T409531
+
+## April 2025
+- sync with upstream
 
 ## March 2025
 - 3.0 - adjust entrypoint
