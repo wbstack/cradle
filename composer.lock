@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73fbd8c016bdac7233ae2ee31647a9e6",
+    "content-hash": "7c8b7f7b99723d9a04c69d346e5628d0",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1015,12 +1015,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wbstack/magnustools.git",
-                "reference": "855a8bb2e24433c2cf582c0dcbd504bf902f1ad1"
+                "reference": "02267937eec783642d30ce987c53a99e285f4676"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/855a8bb2e24433c2cf582c0dcbd504bf902f1ad1",
-                "reference": "855a8bb2e24433c2cf582c0dcbd504bf902f1ad1",
+                "url": "https://api.github.com/repos/wbstack/magnustools/zipball/02267937eec783642d30ce987c53a99e285f4676",
+                "reference": "02267937eec783642d30ce987c53a99e285f4676",
                 "shasum": ""
             },
             "require": {
@@ -1056,7 +1056,7 @@
                 "issues": "https://bitbucket.org/magnusmanske/magnustools/issues?status=new&status=open",
                 "source": "https://bitbucket.org/magnusmanske/magnustools/"
             },
-            "time": "2025-11-04T13:40:11+00:00"
+            "time": "2025-11-20T09:15:14+00:00"
         }
     ],
     "packages-dev": [],
