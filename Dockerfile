@@ -1,4 +1,4 @@
-FROM composer:2.8 as composer
+FROM composer:2.8 AS composer
 
 WORKDIR /installing
 COPY ./ /installing
@@ -9,7 +9,7 @@ FROM php:8.1-apache
 
 LABEL org.opencontainers.image.source="https://github.com/wbstack/cradle"
 
-ENV APACHE_DOCUMENT_ROOT /var/www/html/cradle/public_html
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/cradle/public_html
 #TODO do 2 tuns in 1 layer..
 RUN sed -ri -e "s!/var/www/html!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/sites-available/*.conf
 RUN sed -ri -e "s!/var/www/!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
