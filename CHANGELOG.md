@@ -1,5 +1,9 @@
 # cradle
 
+## March 2025
+- 3.0 - adjust entrypoint
+  - Install extra tls CA cert if it exists
+
 ## March 2021
 
 - 2.0 - PHP 7.3, Apache & API config change

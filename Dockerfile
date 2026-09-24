@@ -1,12 +1,11 @@
-FROM composer@sha256:d374b2e1f715621e9d9929575d6b35b11cf4a6dc237d4a08f2e6d1611f534675 as composer
-# composer is pinned at a PHP 7 version
+FROM composer:2.8 as composer
 
 WORKDIR /installing
 COPY ./ /installing
 RUN composer install --no-dev --no-progress
 
 
-FROM php:7.3-apache
+FROM php:8.1-apache
 
 LABEL org.opencontainers.image.source="https://github.com/wbstack/cradle"
 
@@ -18,3 +17,9 @@ RUN sed -ri -e "s!/var/www/!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/apache2.conf
 COPY --from=composer --chown=www-data:www-data /installing /var/www/html/cradle
 
 ADD ./docker/config.js /var/www/html/cradle/public_html/config.js
+
+COPY docker/entrypoint.sh /entrypoint.sh
+COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
+
+ENTRYPOINT ["/bin/bash"]
+CMD ["/entrypoint.sh"]
