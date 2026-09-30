@@ -52,3 +52,11 @@ Install the required PHP via composer:
 ```sh
 composer install
 ```
+
+### Tests
+
+Run the ShEx parser tests with Node.js:
+
+```sh
+node --test tests/shex-parser.test.js
+```

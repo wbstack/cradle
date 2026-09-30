@@ -65,6 +65,29 @@
 <script>
 'use strict';
 
+function getDirectPropertyPrefixes( schemaText, directPropertyNamespace ) {
+    const prefixRegex = /^\s*PREFIX\s+([A-Za-z_][\w.-]*):\s*<([^>]+)>/gim;
+    const prefixes = new Set();
+    let match;
+
+    while ( ( match = prefixRegex.exec( schemaText ) ) !== null ) {
+        if ( match[2] === directPropertyNamespace ) {
+            prefixes.add( match[1] );
+        }
+    }
+
+    return prefixes;
+}
+
+function getDirectProperty( part, prefixes ) {
+    const match = part.match( /^([A-Za-z_][\w.-]*):(P\d+)\s*(.*)$/ );
+    if ( match === null || !prefixes.has( match[1] ) ) {
+        return null;
+    }
+
+    return { id: match[2], rest: match[3] };
+}
+
 let ShexPage = Vue.extend ( {
     props : [ 'e' ] ,
     data : function () { return { s:{} , data:{} , lads:["labels","aliases","descriptions"] , can_create_new_item:false , creation_data:{} , warning_messages:[] , created_items:[] , vue_key_num:0 , debugging:false , loading:true , j:{} } } ,
@@ -93,18 +116,24 @@ let ShexPage = Vue.extend ( {
 
             let s = {labels:{} , props:{}} ;
             let to_load = [] ;
-            const regex1 = RegExp('<([^/<>]+)>(?: EXTRA .*?)?\w*\{(.+?)\}','gi'); // THIS DOES NOT DEAL WITH {num} OR {num,num}!!
+            const directPropertyNamespace = new URL( config.wikibase_api ).origin
+                + '/prop/direct/';
+            const directPropertyPrefixes = getDirectPropertyPrefixes(
+                j.schemaText,
+                directPropertyNamespace
+            );
+            const regex1 = /<([^/<>]+)>(?:\s+EXTRA\s+.*?)?\s*\w*\s*\{(.+?)\}/gi; // THIS DOES NOT DEAL WITH {num} OR {num,num}!!
             while ( (m = regex1.exec(t)) !== null ) {
                 if ( m[1] != start ) continue ;
                 let parts = m[2].split(';') ;
                 $.each ( parts , function ( dummy , part ) {
                     part = $.trim(part) ;
                     if ( part == '' ) return ;
-                    let n = part.match(/^wdt:(P\d+)\s*(.*)$/) ;
+                    let n = getDirectProperty( part, directPropertyPrefixes );
                     if ( n == null ) return ;
 
-                    let prop = n[1] ;
-                    let rest = n[2] ;
+                    let prop = n.id ;
+                    let rest = n.rest ;
                     to_load.push ( prop ) ;
                     //console.log(part,'||',prop,'||',rest);
                     s.props[prop] = { min:0 } ;
