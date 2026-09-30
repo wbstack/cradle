@@ -40,9 +40,7 @@ const prefixAndStart = 'PREFIX wdt: <http://example.test/prop/direct/>\n'
 	+ 'PREFIX wd: <http://example.test/entity/>\n'
 	+ 'start = @<human>\n';
 
-test( 'matches the start shape when whitespace precedes its opening brace', {
-	skip: 'Enable after the ShEx regex fix is applied',
-}, () => {
+test( 'matches the start shape when whitespace precedes its opening brace', () => {
 	const schema = prefixAndStart + '<human> {\n  wdt:P1 [wd:Q1]\n}';
 	const body = getStartShapeBody( schema );
 
@@ -61,6 +59,15 @@ test( 'continues to match compact shape syntax', () => {
 test( 'matches shapes with an EXTRA declaration', () => {
 	const schema = prefixAndStart
 		+ '<human> EXTRA wdt:P31 {\n  wdt:P1 [wd:Q1]\n}';
+	const body = getStartShapeBody( schema );
+
+	assert.ok( body, 'the start shape should be detected' );
+	assert.match( body, /wdt:P1/ );
+} );
+
+test( 'allows whitespace around EXTRA and before the opening brace', () => {
+	const schema = prefixAndStart
+		+ '<human>   EXTRA   wdt:P31   {\n  wdt:P1 [wd:Q1]\n}';
 	const body = getStartShapeBody( schema );
 
 	assert.ok( body, 'the start shape should be detected' );
