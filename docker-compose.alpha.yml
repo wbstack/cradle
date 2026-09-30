@@ -10,9 +10,9 @@ services:
       - ./public_html/vue_components:/var/www/html/cradle/public_html/vue_components:ro
       - ./public_html/resources:/var/www/html/cradle/public_html/resources:ro
       - ./vendor:/var/www/html/cradle/vendor:ro
-      - ./docker/config-docker-compose.js:/var/www/html/cradle/public_html/config.js:ro
+      - ./docker/config-docker-compose-alpha.js:/var/www/html/cradle/public_html/config.js:ro
     ports:
       - 8087:80
     environment:
-      CRADLE_WIKIBASE_BASE_URL: http://site1.localhost:8001
+      CRADLE_WIKIBASE_BASE_URL: https://addshore-alpha.wiki.opencura.com
       CRADLE_BASE_URL: http://localhost:8087
