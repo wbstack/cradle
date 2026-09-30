@@ -55,10 +55,8 @@ composer install
 
 ### Tests
 
-Currently there is only one node test.
-
-Run the ShEx shape-matching tests with Node.js:
+Run the ShEx parser tests with Node.js:
 
 ```sh
-node --test tests/shex-regex.test.js
+node --test tests/shex-parser.test.js
 ```

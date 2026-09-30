@@ -14,6 +14,15 @@ const regexDeclaration = shexPage.match(/const regex1 = ([^;]+);/);
 
 assert.ok(regexDeclaration, 'ShEx shape regex declaration exists');
 
+function getProductionFunction( name ) {
+	const declaration = shexPage.match(
+		new RegExp( `function ${name}\\([\\s\\S]*?\\n\\}` )
+	);
+
+	assert.ok( declaration, `${name} helper exists` );
+	return vm.runInNewContext( `(${declaration[0]})` );
+}
+
 function getStartShapeBody( schemaText ) {
 	const startMatch = schemaText.match( /\n *start\s*=\s*@<\s*(.+?)\s*>/ );
 	if ( startMatch === null ) {
@@ -72,4 +81,20 @@ test( 'allows whitespace around EXTRA and before the opening brace', () => {
 
 	assert.ok( body, 'the start shape should be detected' );
 	assert.match( body, /wdt:P1/ );
+} );
+
+test( 'resolves custom prefixes for the local direct-property namespace', () => {
+	const directPropertyNamespace = 'http://example.test/prop/direct/';
+	const schema = 'PREFIX wdt: <http://example.test/prop/direct/>\n'
+		+ 'PREFIX wfdt: <http://example.test/prop/direct/>\n'
+		+ 'PREFIX wdtForeign: <http://www.wikidata.org/prop/direct/>\n'
+		+ 'PREFIX ex: <http://example.test/prop/>\n';
+	const getDirectPropertyPrefixes = getProductionFunction( 'getDirectPropertyPrefixes' );
+	const getDirectProperty = getProductionFunction( 'getDirectProperty' );
+	const prefixes = getDirectPropertyPrefixes( schema, directPropertyNamespace );
+
+	assert.equal( getDirectProperty( 'wfdt:P1 [wd:Q1]', prefixes ).id, 'P1' );
+	assert.equal( getDirectProperty( 'wdt:P2', prefixes ).id, 'P2' );
+	assert.equal( getDirectProperty( 'wdtForeign:P3', prefixes ), null );
+	assert.equal( getDirectProperty( 'ex:P4', prefixes ), null );
 } );
