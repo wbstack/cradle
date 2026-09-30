@@ -1,6 +1,6 @@
 'use strict';
 
-const wikibaseBaseUrl = 'http://site1.localhost:8001';
+const wikibaseBaseUrl = 'https://addshore-alpha.wiki.opencura.com';
 const cradleBaseUrl = 'http://localhost:8087';
 
 let config = {
