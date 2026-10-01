@@ -5,7 +5,7 @@ COPY ./ /installing
 RUN composer install --no-dev --no-progress
 
 
-FROM php:8.1-apache
+FROM php:8.5-apache
 
 LABEL org.opencontainers.image.source="https://github.com/wbstack/cradle"
 
