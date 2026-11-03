@@ -23,6 +23,21 @@ function get_config() {
 		'cradle_api' => "https://${s}/tools/cradle/api.php",
 		'vue_components_base_url' => "https://${s}/tools/cradle/resources/vue/",
 	];
+	$wikibaseBaseUrl = getenv('CRADLE_WIKIBASE_BASE_URL');
+	if ( $wikibaseBaseUrl !== false && $wikibaseBaseUrl !== '' ) {
+		$wikibaseBaseUrl = rtrim( $wikibaseBaseUrl, '/' );
+		$j['wikibase_url'] = "${wikibaseBaseUrl}/wiki/";
+		$j['api'] = "${wikibaseBaseUrl}/w/api.php";
+		$j['wikibase_api'] = "${wikibaseBaseUrl}/w/api.php";
+		$j['oauth_url'] = "${wikibaseBaseUrl}/w/index.php?title=Special:OAuth";
+	}
+	$cradleBaseUrl = getenv('CRADLE_BASE_URL');
+	if ( $cradleBaseUrl !== false && $cradleBaseUrl !== '' ) {
+		$cradleBaseUrl = rtrim( $cradleBaseUrl, '/' );
+		$j['cradle_url'] = "${cradleBaseUrl}/";
+		$j['cradle_api'] = "${cradleBaseUrl}/api.php";
+		$j['vue_components_base_url'] = "${cradleBaseUrl}/resources/vue/";
+	}
 	$j = json_decode( json_encode( $j ) );// Convert to object
 	return $j ;
 }

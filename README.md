@@ -52,3 +52,34 @@ Install the required PHP via composer:
 ```sh
 composer install
 ```
+
+### Docker Compose development
+
+The existing Alpha-backed setup uses addshore-alpha:
+
+```sh
+docker compose -f docker-compose.alpha.yml up -d
+```
+
+Open Cradle at <http://localhost:8087/>.
+
+To test against a local MediaWiki instead, start its stack from its checkout:
+
+```sh
+docker compose -p cradle-shex-mw up -d
+```
+
+Then start Cradle from this checkout:
+
+```sh
+docker compose up -d
+```
+
+Cradle uses the local wiki at <http://site1.localhost:8001/>. If that host does
+not resolve, add `127.0.0.1 site1.localhost` to your hosts file. This MediaWiki
+stack uses a fake API; OAuth-backed writes are not configured.
+
+Cradle's source files, Composer dependencies, and generated frontend resources
+are mounted from this checkout, so edits are available without rebuilding the
+image. Run `composer install` first to populate dependencies and generated
+resources.

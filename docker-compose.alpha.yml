@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  cradle:
+    build: .
+    volumes:
+      - ./public_html/api.php:/var/www/html/cradle/public_html/api.php:ro
+      - ./public_html/config.js.template:/var/www/html/cradle/public_html/config.js.template:ro
+      - ./public_html/index.html:/var/www/html/cradle/public_html/index.html:ro
+      - ./public_html/vue.js:/var/www/html/cradle/public_html/vue.js:ro
+      - ./public_html/vue_components:/var/www/html/cradle/public_html/vue_components:ro
+      - ./public_html/resources:/var/www/html/cradle/public_html/resources:ro
+      - ./vendor:/var/www/html/cradle/vendor:ro
+      - ./docker/config-docker-compose-alpha.js:/var/www/html/cradle/public_html/config.js:ro
+    ports:
+      - 8087:80
+    environment:
+      CRADLE_WIKIBASE_BASE_URL: https://addshore-alpha.wiki.opencura.com
+      CRADLE_BASE_URL: http://localhost:8087
