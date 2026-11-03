@@ -250,21 +250,20 @@ let ShexPage = Vue.extend ( {
             } ;
 
             widar.run ( params , function ( d ) {
-                if ( d.error != 'OK' || typeof d.last_res == 'undefined' ) {
-                    console.log ( JSON.parse(JSON.stringify(me.creation_data)) ) ;
-                    me.warning_messages = [ d.error ] ;
+                $('#working').hide() ;
+                if ( d.error != 'OK' || !d.res || !d.res.entity || !d.res.entity.id ) {
+                    me.warning_messages = [ d.error != 'OK' ? d.error : 'No item ID was returned. Check recent changes before retrying.' ] ;
                     me.can_create_new_item = true ;
                     return ;
                 }
                 me.warning_messages = [ 'Item created!' ] ;
-                me.created_items.push ( d.last_res.entity.id ) ;
+                me.created_items.push ( d.res.entity.id ) ;
                 me.can_create_new_item = true ;
 
                 // Logging
                 $.getJSON ( 'https://tools.wmflabs.org/magnustools/logger.php?tool=cradle&method=item from shex&callback=?' , function(j){} ) ;
 
 //                console.log ( d ) ;
-                $('#working').hide() ;
             } ) ;
         } ,
         initializeDataFromItem : function ( q ) {
